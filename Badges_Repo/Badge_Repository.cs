@@ -63,13 +63,6 @@ namespace Badges_Repo
             }
         }
 
-        //public void GetAllBadges()
-        //{
-        //    Console.WriteLine("Key\n");
-        //    Console.WriteLine($"{"Badge ID", -12}{"Door Access"}");
-
-        //}
-
         // Helper
         public Badge GetBadgeByID(int badgeID)
         {

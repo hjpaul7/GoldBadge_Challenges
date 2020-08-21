@@ -36,6 +36,7 @@ namespace Badges_Console
                         break;
 
                     case "2":
+                        DisplayAllBadges();
                         EditBages();
                         break;
 
@@ -57,7 +58,7 @@ namespace Badges_Console
         {
             Console.Clear();
 
-            //Console.WriteLine($"{"Badge ID);
+            Console.WriteLine($"{"Badge ID", -5} \t\t{"Doors", -5}");
 
             Dictionary<int, List<string>> badgeList = _badgeRepo.GetAllBadges();
             foreach (KeyValuePair<int, List<string>> badge in badgeList)
@@ -66,33 +67,15 @@ namespace Badges_Console
                 foreach (string door in badge.Value)
                 {
                     string displayDoor = door;
-                    Console.WriteLine(displayBadgeKey);
-                    Console.WriteLine(displayDoor);
+                    Console.WriteLine($"{displayBadgeKey,-7} \t\t{displayDoor,-5} ");
                 }
                
             }
-            Console.WriteLine("Press any key to return");
+            Console.WriteLine("\n" +
+                "Press any key to Continue");
             Console.ReadKey();
 
         }
-
-        //private void DisplayBadge(Badge badge)
-        //{
-        //    Console.WriteLine($"Badge ID: {badge.BadgeID}\n" +
-        //        $"Doors: {badge.ListOfDoors}");
-        //}
-
-
-        //public void DisplayAllBadges()
-        //{
-        //    Console.WriteLine($"{"Badge ID", -12}{"Door Access"}");
-        //    foreach (KeyValuePair<int, List<string>> badge in _badgeRepo)
-        //    {
-        //        Console.WriteLine($"{badge.Key, -12}");
-        //        string joined = string.Join(", ", badge.Value.ToArray());
-        //        Console.WriteLine($"{joined}");
-        //    }
-        //}
 
         public void CreateBadge()
         {
@@ -106,11 +89,13 @@ namespace Badges_Console
 
             while (_isRunning)
             {
-                Console.WriteLine("Do you want to add more doors?\n" +
+                Console.WriteLine("\n" +
+                    "Do you want to add more doors?\n" +
                     "\n" +
                     "1. Yes\n" +
                     "2. No\n");
 
+                Console.Write("Enter Selection: ");
                 string userInput = Console.ReadLine();
 
                 switch (userInput)
@@ -168,7 +153,7 @@ namespace Badges_Console
                             Console.WriteLine("Enter Badge ID: ");
                             _badgeRepo.GetBadgeByID(badgeID);
 
-                            Console.WriteLine("Enter door to remove: ");
+                            Console.Write("Enter door to remove: ");
                             string doorInput = Console.ReadLine();
                             _badgeRepo.DeleteBadgeDoor(badgeID, doorInput);
                             Console.WriteLine("Door Deleted");
@@ -182,7 +167,7 @@ namespace Badges_Console
                             break;
 
                         case "4":
-                            _isRunning = false;
+                            RunMenu();
                             break;
 
                         default:
@@ -198,6 +183,11 @@ namespace Badges_Console
                 Console.ReadKey();
             }
         }
+
+        //private void BadgeList()
+        //{
+        //    Badge badge1 = new Badge(1, List<string> "a1");
+        //}
 
 
     }
