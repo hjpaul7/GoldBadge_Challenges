@@ -59,7 +59,7 @@ namespace Badges_Console
         {
             Console.Clear();
 
-            Console.WriteLine($"{"Badge ID", -5} \t\t{"Doors", -5}");
+            Console.WriteLine($"{"Badge #", -5} \t\t{"Door Access", -5}");
 
             Dictionary<int, List<string>> badgeList = _badgeRepo.GetAllBadges();
             foreach (KeyValuePair<int, List<string>> badge in badgeList)
