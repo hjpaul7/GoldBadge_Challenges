@@ -14,6 +14,7 @@ namespace Badges_Console
 
         public void Start()
         {
+            SeedBadges();
             RunMenu();
         }
 
@@ -184,10 +185,18 @@ namespace Badges_Console
             }
         }
 
-        //private void BadgeList()
-        //{
-        //    Badge badge1 = new Badge(1, List<string> "a1");
-        //}
+        public void SeedBadges()
+        {
+            _badgeRepo.CreateBadge(1);
+            _badgeRepo.AddDoorToBadge(1, "A1");
+
+            _badgeRepo.CreateBadge(2);
+            _badgeRepo.AddDoorToBadge(2, "A2");
+
+            _badgeRepo.CreateBadge(3);
+            _badgeRepo.AddDoorToBadge(3, "B1");
+            _badgeRepo.AddDoorToBadge(3, "B2");
+        }
 
 
     }
